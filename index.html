@@ -1,0 +1,64 @@
+ 
+<html>
+	<head>
+		<title></title>
+			</head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script>
+			"use strict";
+			function fWertetabelle() {
+			// Quellcode
+
+			var vAnzahl;
+			var vAusgabe;
+			var vX;
+			var vY;
+			var vTeiler;
+
+			// Start für x definieren
+			vX = 1;
+			// Wie viele Zeilen soll die Tabelle haben...
+			vAnzahl = document.getElementById("idAnzahl").value;
+			vTeiler = document.getElementById("idTeiler").value;
+
+			vAusgabe = "";
+			vAusgabe = vAusgabe + "<table border=1>";
+			vAusgabe = vAusgabe + "<tr><th>x</td><th>f(x)=x<sup>3</sup>+ 2x +10</td></tr>";
+
+			while (vX <=vAnzahl) {
+				
+				// Berechne Y
+				vY = vX*vX*vX+ (2*vX)+10;
+				
+				
+				// Erhöhe x um 1
+				if(vY%vTeiler==0){
+				
+				vAusgabe = vAusgabe + "<tr style=background-color:yellow><td>" + vX + "</td><td>" + vY + "</td></tr>";
+				}
+				
+				else {
+				vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + vY + "</td></tr>";
+				}
+				
+				vX = vX + 1;
+			}
+
+		
+			vAusgabe = vAusgabe + "</table>";
+
+			document.getElementById("divAusgabe").innerHTML = vAusgabe;
+		}
+
+		</script>
+
+
+	<body>
+		<h1>Mathematische Funktion (Wertetabelle) </h1>
+		<h3>f(x)=x<sup>3</sup>+ 2x -10</h3>
+        x läuft von 1 bis <input id="idAnzahl" type="text" value="20"></br></br>
+		Wert von f(x) teilbar durch:<input id="idTeiler" type="text" size = "5" value="">
+		<button onClick="fWertetabelle();">Wertetabelle erzeugen!</button><br /><br />
+        <div id="divAusgabe">Button klicken!</div>
+	</body>
+</html>
